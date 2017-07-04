@@ -1,0 +1,54 @@
+#sisenseInsightBall{
+  z-index: 10;
+  position: absolute;
+  left: 90%;
+  top: 11%;
+}
+
+.insight-ball {
+  z-index: 1002;
+  height: 100px;
+  width: 100px;
+  display: block;
+  margin: 20px auto;
+  background-color: #ffcb05;
+  border-radius: 100%;
+  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+}
+
+.insight-ball:hover {
+  transition: all 150ms ease;
+  height: 130px;
+  width: 130px;
+  margin: 0px 0px 0px 0px;
+  top: 0px;
+  left: 0px;
+}
+
+.insight-ball-icon{
+  width: 53px;
+  height: 56px;
+  margin: 17px 23px;
+}
+
+.insight-ball-icon.large{
+  margin: 20px 37px;
+}
+
+.insight-ball-caption{
+  color: white;
+  font-family: Impact;
+  font-weight: 100;
+  font-size: 20px;
+  margin: 10px;
+  text-align: center;
+  position: relative;
+  bottom: 21px;
+  opacity: 0;
+}
+
+.insight-ball-caption.large{
+  display: block;
+  opacity: 1;
+}
