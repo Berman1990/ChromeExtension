@@ -9,46 +9,41 @@
   z-index: 1002;
   height: 100px;
   width: 100px;
-  display: block;
+  display: flex;
   margin: 20px auto;
   background-color: #ffcb05;
   border-radius: 100%;
   box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.15);
   cursor: pointer;
 }
-
-.insight-ball:hover {
-  transition: all 150ms ease;
-  height: 130px;
-  width: 130px;
-  margin: 0px 0px 0px 0px;
-  top: 0px;
-  left: 0px;
+.insight-ball .insight-ball-icon {
+  background-image: url('sisense-ball-logo.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  width: 46px;
+  height: 62px;
+  margin: 15px auto 0px;
+  position: relative;
 }
-
-.insight-ball-icon{
-  width: 53px;
-  height: 56px;
-  margin: 17px 23px;
-}
-
-.insight-ball-icon.large{
-  margin: 20px 37px;
-}
-
-.insight-ball-caption{
-  color: white;
+.insight-ball .insight-ball-caption{
+  color: black;
   font-family: Impact;
   font-weight: 100;
   font-size: 20px;
   margin: 10px;
   text-align: center;
   position: relative;
-  bottom: 21px;
-  opacity: 0;
+  display: none;
 }
-
-.insight-ball-caption.large{
+.insight-ball:hover {
+  transition: all 150ms ease;
+  height: 130px;
+  width: 130px;
+  display: flex;
+  flex-direction: column;
+  margin: 0px;
+}
+.insight-ball:hover .insight-ball-caption {
   display: block;
-  opacity: 1;
 }

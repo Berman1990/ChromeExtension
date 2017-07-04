@@ -6,11 +6,11 @@
   "version": "1.0",
 
   "browser_action": {
-    "default_icon": "sisense.png",
+    "default_icon": "sisense-64-logo.png",
     "default_popup": "popup.html"
   },
   "icons": {
-    "64": "sisense.png"
+    "64": "sisense-64-logo.png"
   },
   "permissions": [
     "activeTab",
@@ -20,7 +20,7 @@
     {
       "matches": ["https://mail.google.com/*"],
       "css": ["sisenseInsight.css"],
-      "js": ["jquery.min.js", "myScript.js"]
+      "js": ["libs/jquery.min.js", "libs/dragiframe.js", "myScript.js"]
     }
   ],
   "web_accessible_resources": [
