@@ -11,11 +11,10 @@ $(document).ready(function(){
 // hides the div when clicking outside of the component
 $(document).mouseup(function(e)
 {
-    var container = $("#insights-content");
     // if the target of the click isn't the container nor a descendant of the container
     if(!($(e.target).parents('#sisense-insights').length > 0))
     {
-        container.hide("blind");
+        $("#insights-content").hide("blind");
         $('#insight-ball').removeClass('active');
         $('#insight-ball-btn').hide("drop");
     }
