@@ -9,4 +9,9 @@ $(document).ready(function(){
   $('#sisenseInsightBall').draggable();
 });*/
 
-$('body').append('<div>yeled gever</div>');
+$.get(chrome.runtime.getURL('sisenseInsight.html'), function(data) {
+    //alert(data);
+    //$(data).appendTo('body');
+    // Or if you're using jQuery 1.8+:
+    $($.parseHTML(data)).appendTo('body');
+});
