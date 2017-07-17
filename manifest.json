@@ -14,7 +14,8 @@
     "activeTab",
     "contextMenus",
     "http://api.wordnik.com/",
-    "https://ajax.googleapis.com/"
+    "https://ajax.googleapis.com/",
+    "https://web.whatsapp.com/"
   ],
   "background":{
     "scripts": ["libs/jquery.min.js", "background.js"]
@@ -23,11 +24,12 @@
     {
       "matches": ["https://mail.google.com/*", "https://web.whatsapp.com/*"],
       "css": ["sisenseInsight.css"],
-      "js": ["libs/jquery.min.js", "libs/dragiframe.js", "myScript.js"]
+      "js": ["libs/jquery.min.js", "libs/jquery-ui.min.js", "myScript.js"]
     }
   ],
   "web_accessible_resources": [
     "sisenseInsight.html",
     "sisenseInsight.css"
-  ]
+  ],
+  "content_security_policy": "script-src 'self' https://ajax.googleapis.com; object-src 'self'"
 }

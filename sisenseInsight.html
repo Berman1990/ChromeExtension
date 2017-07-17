@@ -4,22 +4,26 @@
     <title>Getting Started Extension's Popup</title>
     <link rel="stylesheet" type="text/css" href="sisenseInsight.css">
     <script src="libs/jquery.min.js"></script>
-    <script src="sisenseInsight.js"></script>
+    <script src="libs/jquery-ui.min.js"></script>
+    <script src="myScript.js"></script>
   </head>
   <body>
     <div class="sisense-insights" id="sisense-insights">
       <!--<div class="insight-ball-btn" id="insight-ball-btn"></div>-->
-      <div class="insight-ball" id="insight-ball"">
+      <div class="insight-ball" id="insight-ball">
         <div class="insight-ball-icon" id="insight-ball-icon"></div>
         <div class="insight-ball-caption" id="insight-ball-caption">Insight</div>
       </div>
       <div class="insights-content" id="insights-content">
-        <div class="header"><p>Here some widgets that you might find interesting...</p></div>
-        <input id="searchBox" class="searchBox" type="text" placeholder="Search Tags">
+        <div class="menu">
+          <div class="menu-logo"></div>
+          <div class="buttons">
+            <div id="btn-close" class="close"></div>
+          </div>
+        </div>
+        <input id="searchBox" class="searchBox" type="text" placeholder="Search...">
         <div class="loader" id="loader"></div>
         <div class="widgets-list" id="widgets-list">
-            <img class="single-widget" src="https://cdn.sisense.com/wp-content/uploads/Sisense-dashboard-release-version-5.7.5.png">
-            <img class="single-widget" src="http://www.gapsystems.net/wp-content/uploads/2015/05/image001.png">
         </div>
       </div>
     </div>

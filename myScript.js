@@ -13,13 +13,28 @@ function searchWidget(searchTerm){
       $('#loader').hide();
       $('#widgets-list').show();
 
-      var newImage = new Image(300, 200);
-      var srcImage = "data:image/png;base64, " + data.tags[1].revenue[0];
-
-      newImage.src = srcImage;
-      $('#widgets-list').append(newImage);
+      var images = flatResponse(data.tags);
+      if (images.length > 0) {
+        $('#insight-ball').addClass('shaker');
+        images.forEach(function(image) {
+          var newImage = new Image();
+          newImage.src = "data:image/png;base64," + image;
+          newImage.className = "single-widget";
+          var htmlImage = $('#widgets-list').append(newImage);
+        })
+      }
     }
   });
+}
+
+function flatResponse(response) {
+  var result = [];
+  response.forEach(function(item) {
+    item.data.forEach(function(image){
+      result.push(image);
+    })
+  })
+  return result;
 }
 
 //register the gmail and whatsapp input to change event listener
@@ -58,25 +73,26 @@ else if(location.origin == "https://web.whatsapp.com"){
   }, 3000);
 }
 
-$(document).mouseup(function(e){
-    // if the target of the click isn't the container nor a descendant of the container
-    if(!($(e.target).parents('#sisense-insights').length > 0))
-    {
-        $("#insights-content").hide("blind");
-        $('#insight-ball').removeClass('active');
-        $('#insight-ball-btn').hide("drop");
-    }
-});
-
 $(document).ready(function(){
   //ball click event
   $('#insight-ball').click(function() {
     if (!($('#insights-content').is(":visible"))){
-      $('#insights-content').show("blind");
+      $('#insight-ball').removeClass('shaker');
       $('#insight-ball-btn').show("drop");
       $('#insight-ball').addClass('active');
+      $('#insight-ball').addClass('clicked');
+      setTimeout(function(){ $('#insights-content').show("blind"); }, 700);
     }
   })
+
+  $('#btn-close').click(function(){
+    $("#insights-content").hide("blind");
+    $('#insight-ball').removeClass('active');
+    $('#insight-ball').removeClass('clicked');
+    $('#insight-ball-btn').hide("drop");
+  })
+
+  $( "#insights-content" ).draggable();
 
   //key press enter for search input
   $('#searchBox').keypress(function(event) {
