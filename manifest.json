@@ -12,10 +12,12 @@
   },
   "permissions": [
     "activeTab",
+    "contextMenus",
+    "http://api.wordnik.com/",
     "https://ajax.googleapis.com/"
   ],
   "background":{
-    "scripts": ["background.js"]
+    "scripts": ["libs/jquery.min.js", "background.js"]
   },
   "content_scripts": [
     {
