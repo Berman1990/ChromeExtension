@@ -1,9 +1,6 @@
-
-
 function searchWidget(searchTerm, shake){
   console.log(searchTerm);
   $('#widgets-list').hide();
-  $('#widgets-list').empty();
   $('#loader').show();
 
   $.ajax({
@@ -14,7 +11,7 @@ function searchWidget(searchTerm, shake){
       //alert(data.tags[1].revenue[0]);
       $('#loader').hide();
       $('#widgets-list').show();
-
+      $('#widgets-list').empty();
       var images = flatResponse(data.tags);
       if (images.length > 0) {
         if(shake){
@@ -41,6 +38,16 @@ function flatResponse(response) {
   return result;
 }
 
+var searchTerm = "";
+var searchTermChanged = false;
+
+setInterval(function(){
+  if(searchTermChanged){
+    searchTermChanged = false;
+    searchWidget(searchTerm, true);
+  }
+}, 2500);
+
 //register the gmail and whatsapp input to change event listener
 var activeListener = false;
 if(location.origin == "https://mail.google.com"){
@@ -48,7 +55,10 @@ if(location.origin == "https://mail.google.com"){
     if (document.querySelector('[role="textbox"]') && !activeListener){
       var myText = $('div[role="textbox"]');
       $('div[role="textbox"]').bind("DOMSubtreeModified",function(){
-        searchWidget(myText.html(), true);
+        var regex = /(<([^>]+)>)/ig;
+        searchTerm = myText.html().replace(regex, "").replace("&nbsp;", " ");
+
+        searchTermChanged = true;
       });
       activeListener = true;
     }else if (!document.querySelector('[role="textbox"]')){
@@ -62,7 +72,8 @@ else if(location.origin == "https://web.whatsapp.com"){
     if (document.querySelector('[class="input"]') && !activeListener){
       var myText = $('div[class="input"]');
       $('div[class="input"]').bind("DOMSubtreeModified",function(){
-        searchWidget(myText.html(), true);
+        searchTerm = myText.html();
+        searchTermChanged = true;
       });
       activeListener = true;
     }else if (!document.querySelector('[class="input"]')){
@@ -90,9 +101,18 @@ $(document).ready(function(){
     $('#insight-ball').removeClass('active');
     $('#insight-ball').removeClass('clicked');
     $('#insight-ball-btn').hide("drop");
+    $('#insight-ball').removeClass('shaker');
   })
 
-  $( "#insights-content" ).draggable();
+  $("#insights-content").draggable({
+    handle: "#btn-move",
+    drag: function(event){
+      console.log(event);
+      $("#sisense-insights").css({
+
+      })
+    }
+  });
 
   //key press enter for search input
   $('#searchBox').keypress(function(event) {
