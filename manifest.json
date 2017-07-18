@@ -13,9 +13,11 @@
   "permissions": [
     "activeTab",
     "contextMenus",
-    "http://api.wordnik.com/",
-    "https://ajax.googleapis.com/",
-    "https://web.whatsapp.com/"
+    "webRequest",
+    "webRequestBlocking",
+    "browsingData",
+    "http://*/*",
+    "https://*/*"
   ],
   "background":{
     "scripts": ["libs/jquery.min.js", "background.js"]
@@ -30,6 +32,5 @@
   "web_accessible_resources": [
     "sisenseInsight.html",
     "sisenseInsight.css"
-  ],
-  "content_security_policy": "script-src 'self' https://ajax.googleapis.com; object-src 'self'"
+  ]
 }

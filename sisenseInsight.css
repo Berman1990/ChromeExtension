@@ -28,7 +28,7 @@
 .insight-ball {
   height: 100px;
   width: 100px;
-  display: flex;
+  display: none;
   background-color: #ffcb05;
   border-radius: 100%;
   box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.15);
@@ -46,7 +46,7 @@
 }
 
 .insight-ball .insight-ball-icon {
-  background-image: url('http://10.20.5.114:8094/sisense-ball-logo.png');
+  background-image: url('https://fluffy.sisense.com/sisense-ball-logo.png');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
@@ -111,7 +111,7 @@
   height: 44px;
   width: 155px;
   margin-left: 15px;
-  background: #ffcb05 url(http://10.20.5.114:8094/sisense.png) center no-repeat;
+  background: #ffcb05 url(https://fluffy.sisense.com/sisense.png) center no-repeat;
   background-size: cover;
 }
 
@@ -124,7 +124,7 @@
   width: 28px;
   margin-right: 10px;
   margin-left: 10px;
-  background: #ffcb05 url(http://10.20.5.114:8094/cancel.png) center no-repeat;
+  background: #ffcb05 url(https://fluffy.sisense.com/cancel.png) center no-repeat;
   background-size: cover;
   cursor: pointer;
 }
@@ -132,7 +132,7 @@
 .insights-content .menu .move{
   height: 26px;
   width: 26px;
-  background: #ffcb05 url(http://10.20.5.114:8094/move.png) center no-repeat;
+  background: #ffcb05 url(https://fluffy.sisense.com/move.png) center no-repeat;
   background-size: cover;
   cursor: move;
 }
@@ -175,7 +175,7 @@
   width: 60px;
   height: 60px;
   margin-top: 150px;
-  margin-left: 150px;
+  margin-left: 160px;
   display: none;
   -webkit-animation: spin 2s linear;
   animation: spin 2s linear;

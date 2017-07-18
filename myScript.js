@@ -1,11 +1,13 @@
-function searchWidget(searchTerm){
+
+
+function searchWidget(searchTerm, shake){
   console.log(searchTerm);
   $('#widgets-list').hide();
   $('#widgets-list').empty();
   $('#loader').show();
 
   $.ajax({
-    url: "http://10.20.5.114:8094/getWidgetsByTags?text=" + searchTerm,
+    url: "https://fluffy.sisense.com/getWidgetsByTags?text=" + searchTerm,
     contentType: "application/json",
     dataType: "json",
     success: function(data){
@@ -15,7 +17,9 @@ function searchWidget(searchTerm){
 
       var images = flatResponse(data.tags);
       if (images.length > 0) {
-        $('#insight-ball').addClass('shaker');
+        if(shake){
+          $('#insight-ball').addClass('shaker');
+        }
         images.forEach(function(image) {
           var newImage = new Image();
           newImage.src = "data:image/png;base64," + image;
@@ -44,14 +48,12 @@ if(location.origin == "https://mail.google.com"){
     if (document.querySelector('[role="textbox"]') && !activeListener){
       var myText = $('div[role="textbox"]');
       $('div[role="textbox"]').bind("DOMSubtreeModified",function(){
-        //console.log(myText.html());
-        searchWidget(myText.html());
+        searchWidget(myText.html(), true);
       });
       activeListener = true;
     }else if (!document.querySelector('[role="textbox"]')){
       $('div[role="textbox"]').unbind("DOMSubtreeModified");
       activeListener = false;
-      console.log("no input");
     }
   }, 3000);
 }
@@ -60,21 +62,19 @@ else if(location.origin == "https://web.whatsapp.com"){
     if (document.querySelector('[class="input"]') && !activeListener){
       var myText = $('div[class="input"]');
       $('div[class="input"]').bind("DOMSubtreeModified",function(){
-        //console.log(myText.html());
-        //chrome.runtime.sendMessage(myText.html());
-        searchWidget(myText.html());
+        searchWidget(myText.html(), true);
       });
       activeListener = true;
     }else if (!document.querySelector('[class="input"]')){
       $('div[class="input"]').unbind("DOMSubtreeModified");
       activeListener = false;
-      console.log("no input");
     }
   }, 3000);
 }
 
 $(document).ready(function(){
   //ball click event
+  $('#insight-ball').show().css('display', 'flex');
   $('#insight-ball').click(function() {
     if (!($('#insights-content').is(":visible"))){
       $('#insight-ball').removeClass('shaker');
